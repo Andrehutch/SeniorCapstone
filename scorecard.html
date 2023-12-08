@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Golf Scorecard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Golf Scorecard</h1>
+    
+    <!-- Display the scorecard for each player -->
+    {% for player in players %}
+    <h2>Player: {{ player.player_name }}</h2>
+    <form method="POST" action="/scorecard/{{scorecard.scoreCardKey}}"><input type="submit">
+    
+        <table border="1">
+            <tr>
+                <th>Player</th>
+                <th>Handicap</th>
+                <th>Hole1</th>
+                <th>Hole2</th>
+                <th>Hole3</th>
+                <th>Hole4</th>
+                <th>Hole5</th>
+                <th>Hole6</th>
+                <th>Hole7</th>
+                <th>Hole8</th>
+                <th>Hole9</th>
+                <th>Final</th>
+
+            </tr>
+            <tr>
+                <td>{{ player.player_name }}</td>
+                <td>{{ player.handicap }}</td>
+                <td><input name="hole1" value="{{player.playerScore.hole1}}"></td>
+                <td><input name="hole2" value="{{player.playerScore.hole2}}"></td>
+                <td><input name="hole3" value="{{player.playerScore.hole3}}"></td>
+                <td><input name="hole4" value="{{player.playerScore.hole4}}"></td>
+                <td><input name="hole5" value="{{player.playerScore.hole5}}"></td>
+                <td><input name="hole6" value="{{player.playerScore.hole6}}"></td>
+                <td><input name="hole7" value="{{player.playerScore.hole7}}"></td>
+                <td><input name="hole8" value="{{player.playerScore.hole8}}"></td>
+                <td><input name="hole9" value="{{player.playerScore.hole9}}"></td>
+                <td><input type="hidden" name="PlayerScoreKey" value="{{player.playerScore.scoreKey}}">{{player.playerScore.totalScore()}}</td>
+
+            </tr>
+            
+        </table>
+    </form>
+        <a href="/">Back to input</a>    
+    {% endfor %}
+</body>
+</html>
