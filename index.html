@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Golf Scorecard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Golf Scorecard</h1>
+    <form method="POST" action="/save_info">
+        <label for="player1">Player 1 Name:</label>
+        <input type="text" id="player1" name="player1" required><br><br>
+        
+        <label for="player2">Player 2 Name:</label>
+        <input type="text" id="player2" name="player2" required><br><br>
+        
+        <label for="player3">Player 3 Name:</label>
+        <input type="text" id="player3" name="player3" required><br><br>
+        
+        <label for="player4">Player 4 Name:</label>
+        <input type="text" id="player4" name="player4" required><br><br>
+
+        <label for="handicap">Handicap:</label>
+        <input type="number" id="handicap" name="handicap" min="0"><br><br>
+
+        <input type="submit" value="New Game">
+    </form>
+
+    {% for game in previousGames %}
+        <a href="https://bountyhunt0.ue.r.appspot.com/scorecard/{{game.scoreCardKey}}">{{game.date}}</a><br/>
+    {% endfor %}
+</body>
+</html>
